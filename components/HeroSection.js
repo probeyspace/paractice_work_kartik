@@ -2,13 +2,14 @@ import Image from "next/image";
 
 function HeroSection() {
   return (
-    <div>
+    <div className="mt-30">
       <div className=" w-full px-9">
         <Image
           src="/images/hero1.png"
           width={1280}
           height={272}
           className="cursor-pointer mx-auto"
+          alt="name"
           loading="lazy"
         />
         <div className="flex w-full max-w-[1084px] mt-3">
@@ -17,6 +18,7 @@ function HeroSection() {
             width={335}
             height={195}
             className="cursor-pointer mx-auto"
+            alt="name"
             loading="lazy"
           />
           <Image
@@ -25,6 +27,7 @@ function HeroSection() {
             height={195}
             className="cursor-pointer mx-auto"
             loading="lazy"
+            alt="name"
           />
           <Image
             src="/images/hero4.png"
@@ -32,6 +35,7 @@ function HeroSection() {
             height={195}
             className="cursor-pointer mx-auto"
             loading="lazy"
+            alt="name"
           />
         </div>
       </div>

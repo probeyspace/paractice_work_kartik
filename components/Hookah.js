@@ -52,7 +52,7 @@ function Hookah() {
       <div className="grid grid-cols-6 mt-6">
         {products.map((item, index) => {
           return (
-            <div className="border min-h-[260px] pb-2 flex flex-col justify-between shadow-xl px-3 border-[#dfdbdb] rounded-xl  mx-auto w-[179px]">
+            <div key={index} className="border min-h-[260px] pb-2 flex flex-col justify-between shadow-xl px-3 border-[#dfdbdb] rounded-xl  mx-auto w-[179px]">
               <Image
                 key={index}
                 src={item.image}

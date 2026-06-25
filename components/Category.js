@@ -27,7 +27,7 @@ function Category() {
   return (
     <div className="grid grid-cols-10 px-9 mt-5">
       {categories.map((item, index) => {
-        return <Image key={index} src={item.image} width={109} height={160} />;
+        return <Image key={index} src={item.image} width={109} height={160} alt="name"/>;
       })}
     </div>
   );
