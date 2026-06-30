@@ -3,14 +3,15 @@ import Image from "next/image";
 import { LuTimerReset } from "react-icons/lu";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "@/redux/features/cart/CartSlice";
+import Link from "next/link";
+import { i } from "framer-motion/client";
 
 function Dairy() {
   // const [cart, setCart] = useState({}); //empty is undefined, it should be prev || 0, undefined* 1= Nan
-  const dispatch = useDispatch()
-  const items = useSelector((state)=>(state.cart.items))
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
 
   // const increaseCount = (id) => {
   //   setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
@@ -28,42 +29,90 @@ function Dairy() {
       id: 1,
       name: "Mother Diary Toned Milk",
       quantity: "500 ml",
-      image: "/images/dairy/amul.png",
+      image: [
+        "/images/dairy/amul.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
     {
       id: 2,
       name: "Amul Gold Full Cream Milk",
       quantity: "500 ml",
-      image: "/images/dairy/amulCream.png",
+      image: [
+        "/images/dairy/amulCream.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
     {
       id: 3,
       name: "Amul Taaza Toned Milk",
       quantity: "500 ml",
-      image: "/images/dairy/toned.png",
+      image: [
+        "/images/dairy/toned.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
     {
       id: 4,
       name: "Mother Dairy Classic Pouch Curd",
       quantity: "390 ml",
-      image: "/images/dairy/curd.png",
+      image: [
+        "/images/dairy/curd.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
     {
       id: 5,
       name: "Amul Salted Butter",
       quantity: "100 ml",
-      image: "/images/dairy/butter.png",
+      image: [
+        "/images/dairy/butter.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
     {
       id: 6,
       name: "Mother Dairy Cow Milk",
       quantity: "500 ml",
-      image: "/images/dairy/motherDairy.png",
+      image: [
+        "/images/dairy/motherDairy.png",
+        "/images/dairy/md2.png",
+        "/images/dairy/md3.png",
+        "/images/dairy/md4.png",
+        "/images/dairy/md5.png",
+        "/images/dairy/md6.png",
+        "/images/dairy/md7.png",
+      ],
       price: "31",
     },
   ];
@@ -85,13 +134,15 @@ function Dairy() {
               key={index}
               className="border min-h-[260px] pb-2 flex flex-col justify-between shadow-xl px-3 border-[#dfdbdb] rounded-xl  mx-auto w-[179px]"
             >
-              <Image
-                key={index}
-                src={item.image}
-                width={140}
-                height={140}
-                alt="name"
-              />
+              <Link href={`/productDetails/${item.id}`}>
+                <Image
+                  key={index}
+                  src={item.image[0]}
+                  width={140}
+                  height={140}
+                  alt="name"
+                />
+              </Link>
               <div className=" flex flex-col justify-between">
                 <div className="text-[9px] mt-1 flex text-[#444444] font-bold">
                   <LuTimerReset />
@@ -108,7 +159,7 @@ function Dairy() {
                 </div>
                 {count === 0 ? (
                   <p
-                    onClick={()=>dispatch(addItem(item))}
+                    onClick={() => dispatch(addItem(item))}
                     className="text-[#0C831F] pt-1 h-[32px] cursor-pointer border-[#0C831F] bg-[#F7FFF9] rounded-sm text-[13px] text-center border w-15"
                   >
                     ADD
@@ -116,13 +167,18 @@ function Dairy() {
                 ) : (
                   <div className="text-white font-semibold pt-1 h-[32px] border-[#0C831F] bg-[#0C831F] flex gap-2 justify-center items-center rounded-sm text-[15px] text-center border w-15">
                     <button
-                      onClick={()=>dispatch(removeItem(item.id))}
+                      onClick={() => dispatch(removeItem(item.id))}
                       className="text-[10px] cursor-pointer"
                     >
                       <FaMinus />
                     </button>
                     <span className="text-[12px]">{count}</span>
-                    <button onClick={() => dispatch(addItem(item))} className="cursor-pointer">+</button>
+                    <button
+                      onClick={() => dispatch(addItem(item))}
+                      className="cursor-pointer"
+                    >
+                      +
+                    </button>
                   </div>
                 )}
               </div>
